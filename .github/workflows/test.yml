@@ -32,9 +32,7 @@ jobs:
           persist-credentials: false
       - uses: Homebrew/actions/setup-homebrew@main
       - name: Install the checked-out formula
-        run: |
-          brew tap Georicl/tap "$GITHUB_WORKSPACE"
-          brew install --formula Georicl/tap/seqviz-rs
+        run: brew install --formula Georicl/tap/seqviz-rs
       - run: brew test Georicl/tap/seqviz-rs
       - run: brew audit --strict Georicl/tap/seqviz-rs
       - run: brew style --formula Georicl/tap/seqviz-rs
