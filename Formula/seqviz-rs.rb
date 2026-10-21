@@ -1,7 +1,6 @@
 class SeqvizRs < Formula
   desc "Terminal browser for biological sequences and alignment records"
   homepage "https://github.com/Georicl/seqviz-rs"
-  version "0.1.0"
   license "MIT"
 
   on_macos do
@@ -19,8 +18,10 @@ class SeqvizRs < Formula
   on_linux do
     depends_on arch: :x86_64
 
-    url "https://github.com/Georicl/seqviz-rs/releases/download/v0.1.0/seqviz-rs-x86_64-unknown-linux-musl.tar.gz"
-    sha256 "d2b3b1f85d24139bb2b7f910c7eafe52225effc4aa548d2d48d8aa6c308a7466"
+    on_intel do
+      url "https://github.com/Georicl/seqviz-rs/releases/download/v0.1.0/seqviz-rs-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "d2b3b1f85d24139bb2b7f910c7eafe52225effc4aa548d2d48d8aa6c308a7466"
+    end
   end
 
   conflicts_with "sq", because: "both install an sq executable"

@@ -56,13 +56,11 @@ def validate_assets(release: dict, tag: str) -> None:
 def render_formula(tag: str, sums: dict[str, str]) -> str:
     if re.fullmatch(r"v\d+\.\d+\.\d+", tag) is None:
         raise ValueError("Expected a stable tag such as v0.1.0")
-    version = tag[1:]
     base = f"https://github.com/{UPSTREAM}/releases/download/{tag}"
     arm, intel, linux = ARCHIVES
     return f'''class SeqvizRs < Formula
   desc "Terminal browser for biological sequences and alignment records"
   homepage "https://github.com/Georicl/seqviz-rs"
-  version "{version}"
   license "MIT"
 
   on_macos do
@@ -80,8 +78,10 @@ def render_formula(tag: str, sums: dict[str, str]) -> str:
   on_linux do
     depends_on arch: :x86_64
 
-    url "{base}/{linux}"
-    sha256 "{sums[linux]}"
+    on_intel do
+      url "{base}/{linux}"
+      sha256 "{sums[linux]}"
+    end
   end
 
   conflicts_with "sq", because: "both install an sq executable"
