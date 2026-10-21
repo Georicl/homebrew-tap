@@ -1,0 +1,40 @@
+name: Test prebuilt packages
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  generator:
+    name: Check formula generator
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s .github/scripts -p 'test_*.py'
+
+  test:
+    name: Install on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, macos-15-intel, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+      HOMEBREW_NO_ANALYTICS: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Install the checked-out formula
+        run: |
+          brew tap Georicl/tap "$GITHUB_WORKSPACE"
+          brew install --formula Georicl/tap/seqviz-rs
+      - run: brew test Georicl/tap/seqviz-rs
+      - run: brew audit --strict Georicl/tap/seqviz-rs
+      - run: brew style --formula Georicl/tap/seqviz-rs
