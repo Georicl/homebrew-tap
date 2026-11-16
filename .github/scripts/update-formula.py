@@ -96,7 +96,7 @@ def render_formula(tag: str, sums: dict[str, str]) -> str:
     (testpath/"example.fa").write ">record1 example\\nACGT\\nTGCA\\n>record2\\nNNNN\\n"
     assert_equal ">record1 example\\nACGTTGCA\\n>record2\\nNNNN\\n",
                  shell_output("#{{bin}}/sq #{{testpath}}/example.fa")
-    assert_equal "sq #{{version}}\\n", shell_output("#{{bin}}/sq --version")
+    assert_equal "seqviz #{{version}}\\n", shell_output("#{{bin}}/sq --version")
   end
 end
 '''
