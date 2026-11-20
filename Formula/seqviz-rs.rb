@@ -5,13 +5,13 @@ class SeqvizRs < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/Georicl/seqviz-rs/releases/download/v0.2.2/seqviz-rs-aarch64-apple-darwin.tar.gz"
-      sha256 "4627ff3c41908d920dfe5b6169a7952b063a10ed73943f4256ce902fa2d3ad19"
+      url "https://github.com/Georicl/seqviz-rs/releases/download/v2.2.1/seqviz-rs-aarch64-apple-darwin.tar.gz"
+      sha256 "d87db80d9664b5a0a7393831816a9971fdb4ca410298607fbb7f35fb1f351a72"
     end
 
     on_intel do
-      url "https://github.com/Georicl/seqviz-rs/releases/download/v0.2.2/seqviz-rs-x86_64-apple-darwin.tar.gz"
-      sha256 "c5d1a56f676a9a9577de778371e4646d6fc11a90ceeee97743e8ddfd3af04aa4"
+      url "https://github.com/Georicl/seqviz-rs/releases/download/v2.2.1/seqviz-rs-x86_64-apple-darwin.tar.gz"
+      sha256 "ab74dd7e7df15d76d8a2893123684c19d1ae323388872e0d98edd339c73b409e"
     end
   end
 
@@ -19,8 +19,8 @@ class SeqvizRs < Formula
     depends_on arch: :x86_64
 
     on_intel do
-      url "https://github.com/Georicl/seqviz-rs/releases/download/v0.2.2/seqviz-rs-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "8d114ee2843b8ed3dc3efdbc4258beed4a16774c62443ef1b36b953fcd96cd2e"
+      url "https://github.com/Georicl/seqviz-rs/releases/download/v2.2.1/seqviz-rs-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "77a93964b1e76cf5052c2fe550b10ec5118e5696d10a084b6d80864da0e1c6c7"
     end
   end
 
